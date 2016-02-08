@@ -23,12 +23,12 @@ from:aws-receivables-support@email.amazon.com from:aws-receivables@amazon.com
 | --- |
 | <a href="#1-organization-of-submission">1. Organization of Submission</a> |
 | <a href="#2-application-setup">2. Application Setup</a> |
-| <a href="#3-ant-.properties-file">3. Ant .Properties File</a> |
+| <a href="#3-ant-properties-file">3. Ant .Properties File</a> |
 | <a href="#4-build-scripts-setup">4. Build Scripts Setup</a> |
 | <a href="#5-database-setup">5. Database Setup</a> |
 | <a href="#6-deployment-instructions">6. Deployment Instructions</a> |
-| <a href="#6-1-aws-api-access">6.1. AWS API Access</a> |
-| <a href="#6-2-gmail-api-access">6.2. Gmail API Access</a> |
+| <a href="#61-aws-api-access">6.1. AWS API Access</a> |
+| <a href="#62-gmail-api-access">6.2. Gmail API Access</a> |
 | <a href="#7-starting">7. Starting</a> |
 | <a href="#8-verification">8. Verification</a> |
 
