@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cloudhub</groupId>
+  <artifactId>direct-api-access</artifactId>
+  <version>1.0.0</version>
+  <name>direct-api-access</name>
+  <description>Direct API Access Proof of Concept</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+    
+	<dependencyManagement>
+	  <dependencies>
+	    <dependency>
+	      <groupId>com.amazonaws</groupId>
+	      <artifactId>aws-java-sdk-bom</artifactId>
+	      <version>1.10.49</version>
+	      <type>pom</type>
+	      <scope>import</scope>
+	    </dependency>
+	  </dependencies>
+	</dependencyManagement>
+    
+  <dependencies>
+    <dependency>
+        <groupId>com.amazonaws</groupId>
+        <artifactId>aws-java-sdk-s3</artifactId>
+    </dependency>    
+    
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+    </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+</dependencies>
+
+   <profiles>
+        <profile>
+            <id>poc</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+                        
+		     <build>	     
+		    	<plugins>
+		    		<plugin>
+				        <groupId>org.apache.maven.plugins</groupId>
+				        <artifactId>maven-compiler-plugin</artifactId>
+				        <version>3.5</version>
+				        <configuration>
+				          <source>1.7</source>
+				          <target>1.7</target>
+				        </configuration>
+				    </plugin>		    	
+			    	<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<version>1.4.0</version>		
+						<executions>
+						  <execution>
+						    <goals>
+						      <goal>java</goal>
+						    </goals>
+						  </execution>
+						</executions>		
+						<configuration>		
+							<executable>java</executable>	
+							<mainClass>com.cloudhub.main.Main01</mainClass>
+							<cleanupDaemonThreads>false</cleanupDaemonThreads>		
+							<systemProperties>
+					            <systemProperty>
+					              <key>data_folder</key>
+					              <value>C:\Work\TC\CloudHub\direct-api-access\test_files</value>
+					            </systemProperty>
+					            <systemProperty>
+					              <key>time_period</key>
+					              <value>2016-01</value>
+					            </systemProperty>	
+					            <systemProperty>
+					              <key>bucket_name_aws</key>
+					              <value>cloudhub-aws-demo</value>
+					            </systemProperty>	
+					        </systemProperties>					        
+						</configuration>
+					</plugin>      
+		    	</plugins>    
+		    </build>
+        </profile>
+    </profiles>
+</project>

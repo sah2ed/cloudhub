@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cloudhub</groupId>
+  <artifactId>mailbox-search-and-parse</artifactId>
+  <version>1.0.0</version>
+  <description>Mailbox Search and Parse Proof of Concept</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+	<dependency>
+      <groupId>com.cloudhub</groupId>
+      <artifactId>direct-api-access</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    
+    <dependency>
+       <groupId>log4j</groupId>
+       <artifactId>log4j</artifactId>
+       <version>1.2.17</version>
+    </dependency>  
+    <dependency>
+		<groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.4</version>
+	</dependency>
+    <dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.4</version>
+	</dependency>	
+	<dependency>
+	    <groupId>com.itextpdf</groupId>
+	    <artifactId>itextpdf</artifactId>
+	    <version>5.3.4</version>
+	</dependency>
+	  
+    <dependency>
+      <groupId>com.google.api-client</groupId>
+      <artifactId>google-api-client</artifactId>
+      <version>1.20.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.oauth-client</groupId>
+      <artifactId>google-oauth-client-jetty</artifactId>
+      <version>1.20.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-gmail</artifactId>
+      <version>v1-rev29-1.20.0</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+	<plugins>
+   		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.5</version>
+	        <configuration>
+	          <source>1.7</source>
+	          <target>1.7</target>
+	        </configuration>
+		</plugin>		    	
+    	<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>exec-maven-plugin</artifactId>
+			<version>1.4.0</version>		
+			<executions>
+			  <execution>
+			    <goals>
+			      <goal>java</goal>
+			    </goals>
+			  </execution>
+			</executions>		
+			<configuration>		
+				<executable>java</executable>	
+				<mainClass>com.cloudhub.main.Main02</mainClass>
+				<cleanupDaemonThreads>false</cleanupDaemonThreads>		
+				<systemProperties>
+		            <systemProperty>
+		              <key>gmail_data_folder</key>
+		              <value>.gmail/credentials</value>
+		            </systemProperty>
+		            <systemProperty>
+		              <key>time_period</key>
+		              <value>2016-01</value>
+		            </systemProperty>	
+		            <systemProperty>
+		              <key>gmail_user</key>
+		              <value>me</value>
+		            </systemProperty>	
+		        </systemProperties>					        
+			</configuration>
+		</plugin>      
+    </plugins>      	
+  </build>
+  
+</project>
